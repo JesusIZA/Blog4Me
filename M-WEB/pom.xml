@@ -94,6 +94,12 @@
             <version>${jetty9.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>Blog4Me</groupId>
+            <artifactId>M-DB</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <resources>

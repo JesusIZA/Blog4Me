@@ -1,0 +1,66 @@
+/*CONTENT*/
+.content {
+    width: 1200px;
+    margin: 0;
+	margin-top: 30px;
+}
+
+/*STRIP*/
+.strip {
+    background: rgba(0,0,0, .7);
+	border-radius: 5px;
+}
+.str {
+	width: 360px;
+	height: 200px;
+	float: left;
+	margin: 20px;
+	background: black;
+	overflow: hidden; /*schob vmist bloky ne vuhoduv za meji*/
+	position: relative;
+	cursor: pointer;
+	
+	border-radius: 5px;
+	box-shadow: 0 8px 15px rgba(0,0,0,.6);
+}
+/*Nakladka gradient na img*/
+.str::after {
+	content: '';
+	width: 400px;
+	height: 300px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 5px;
+	transition: opacity .4s;
+	
+	background: radial-gradient(transparent, rgba(0,0,0,.7));/*transparent - prozora tochka*/
+}
+.str:hover::after {
+	opacity: 0;
+}
+
+/*SLABES*/
+.slabe {
+    width: 1200px;
+    background: rgba(0,0,0, .7);
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    display: inline-block;
+    
+}
+.slabe img {
+    width: 300px;
+    margin: 20px;
+    border-radius: 5px;
+}
+.slabe p {
+    float: right;
+    width: 800px;
+    padding: 20px;
+}
+
+

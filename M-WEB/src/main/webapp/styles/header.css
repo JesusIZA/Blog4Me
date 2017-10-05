@@ -1,0 +1,14 @@
+.header {
+	height: 140px;
+}
+.inc {
+	font-size: 60pt;
+	float: left;
+}
+.inc img {
+	height: 140px;
+}
+.name {
+	font-size: 24pt;
+	float: right;
+}

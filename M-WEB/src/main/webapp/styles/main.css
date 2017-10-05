@@ -1,0 +1,113 @@
+body {
+	background: black url(images/fon.jpg);
+    background-attachment: fixed;
+	padding: 0;
+    font: 16pt Arial,Tahoma, sans-serif;
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+	color: white;
+}
+a {
+	text-decoration: none;
+	color: white;
+}
+.clear{
+    clear: both;
+}
+
+/*HEADER*/
+.header {
+    background: rgba(0,0,0, .8);
+    width: 1180px;
+    height: 250px;
+    text-align: left;
+    padding: 10px;
+	border-radius: 0 0 5px 5px;
+}
+.title {
+	font-size: 110pt;
+}
+.header span {
+    position: relative;
+    bottom: 50px;
+}
+.btn {
+	width: 200px;
+	height: 30px;
+	border: solid white;
+	background: black;
+	color: white;
+	float: right;
+}
+.btn:hover {
+	border: solid black;
+	background: white;
+	color: black;
+}
+
+/*CONTENT*/
+.coord {
+	font-size: 34pt;
+}
+.content {
+	width: 1200px;
+	border-radius: 5px;
+	background: rgba(0,0,0, .8);
+    margin-top: 30px;
+}
+.content form{
+	text-align: right;
+	padding-right: 480px;
+	padding-bottom: 16px;
+}
+.content input {
+	float: right;
+	width: 200px;
+}
+.err {
+	color: red;
+}
+textarea {
+	margin-left: 170px;
+}
+
+/*FOOTER*/
+.footer {
+	border-radius: 5px 5px 0 0;
+	background: rgba(0,0,0, .8);
+    width: 1160px;
+	padding: 20px;
+	margin-top: 30px;
+}
+.r {
+	float: right;
+	text-align: right;
+}
+.l {
+	float: left;
+	text-align: left;
+}
+/*
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */

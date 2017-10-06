@@ -10,10 +10,10 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 import ua.jrc.db.entity.User;
 
-public class Registration extends WebPage {
+public class RegistrationPage extends WebPage {
 
-	public Registration() {
+	public RegistrationPage() {
 		super();
-
-    }
+		System.out.println("registration");
+	}
 }

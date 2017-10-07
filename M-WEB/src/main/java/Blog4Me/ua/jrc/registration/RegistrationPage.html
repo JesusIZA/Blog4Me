@@ -22,35 +22,35 @@
 
 		<div class="coord"><b>Enter login, first and last name and password for registration</b></div><br />
 
-		<form>
-			<input type="text" name="login">
+		<form wicket:id="formRegistration">
+			<input wicket:id="login" type="text" name="login">
 			<label>Login: </label>
 			<br />
-			<label class="err">Login massage </label>
+			<label wicket:id="loginM" class="err">Login massage </label>
 
 			<br />
-			<input type="text" name="firstname">
+			<input wicket:id="firstName" type="text" name="firstName">
 			<label>First name: </label>
 			<br />
-			<label class="err">First name massage</label>
+			<label wicket:id="firstNameM" class="err">First name massage</label>
 			<br />
-			<input type="text" name="lastname">
+			<input wicket:id="lastName" type="text" name="lastName">
 			<label>Last name: </label>
 			<br />
-			<label class="err">Last name massage</label>
+			<label wicket:id="lastNameM" class="err">Last name massage</label>
 			
 			<br />
-			<input type="text" name="password">
+			<input wicket:id="password" type="text" name="password">
 			<label>Password: </label>
 			<br />
-			<label class="err">Password massage</label>
+			<label wicket:id="passwordM" class="err">Password massage</label>
 			
 			<br />
-			<input class="btn" type="submit" name="registration" value="Registration">
+			<input wicket:id="registration" class="btn" type="submit" name="registration" value="Registration">
 
 		</form>
-		<form>
-			<input class="btn" type="submit" name="signin" value="Go to sign in">
+		<form wicket:id="formLogin">
+			<input wicket:id="signIn" class="btn" type="submit" name="signin" value="Go to sign in">
 			<div class="clear"></div>
 		</form>
 		

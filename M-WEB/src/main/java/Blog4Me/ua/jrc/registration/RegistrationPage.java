@@ -47,13 +47,13 @@ public class RegistrationPage extends WebPage {
 		final TextField login = new TextField("login", new PropertyModel(user, "login"));
 		login.setOutputMarkupId(true);
 
-		final TextField firstName = new TextField("firstName", new PropertyModel(user, "login"));
+		final TextField firstName = new TextField("firstName", new PropertyModel(user, "firstName"));
 		firstName.setOutputMarkupId(true);
 
-		final TextField lastName = new TextField("lastName", new PropertyModel(user, "login"));
+		final TextField lastName = new TextField("lastName", new PropertyModel(user, "lastName"));
 		lastName.setOutputMarkupId(true);
 
-		final TextField password = new TextField("password", new PropertyModel(user, "login"));
+		final TextField password = new TextField("password", new PropertyModel(user, "password"));
 		password.setOutputMarkupId(true);
 
 		AjaxButton registration = new AjaxButton("registration") {

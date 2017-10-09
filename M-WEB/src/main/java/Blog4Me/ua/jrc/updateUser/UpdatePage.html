@@ -17,47 +17,46 @@
 
 		<div class="clear"></div>
 	</div>
-<!--
+
 	<div class="content">
 
 		<div class="coord"><b>Edit first and last name and password if it need</b></div><br />
 
-		<form>
-			<input type="text" name="login">
+		<form wicket:id="formUpdate">
+			<input wicket:id="login" type="text" name="login">
 			<label>Login: </label>
 			<br />
-			<label class="err">Login massage </label>
+			<label wicket:id="loginM" class="err">Login massage </label>
 
 			<br />
-			<input type="text" name="firstname">
+			<input wicket:id="firstName" type="text" name="firstName">
 			<label>First name: </label>
 			<br />
-			<label class="err">First name massage</label>
+			<label wicket:id="firstNameM" class="err">First name massage</label>
 			<br />
-			<input type="text" name="lastname">
+			<input wicket:id="lastName" type="text" name="lastName">
 			<label>Last name: </label>
 			<br />
-			<label class="err">Last name massage</label>
+			<label wicket:id="lastNameM" class="err">Last name massage</label>
 			
 			<br />
-			<input type="text" name="password">
+			<input wicket:id="password" type="text" name="password">
 			<label>Password: </label>
 			<br />
-			<label class="err">Password massage</label>
+			<label wicket:id="passwordM" class="err">Password massage</label>
 			
 			<br />
-			<input class="btn" type="submit" name="update" value="Update">
+			<input wicket:id="update" class="btn" type="submit" name="update" value="Update">
 		</form>
 
-		<br />
-		<form>
-			<input class="btn" type="submit" name="delete" value="Delete profile">
+		<form wicket:id="formDelete">
+			<input wicket:id="delete" class="btn" type="submit" name="delete" value="Delete profile">
 			<div class="clear"></div>
 		</form>
 		
 		<div class="clear"></div>
 	</div>
--->
+
 	<div class="footer">
 
 		<span class="l">

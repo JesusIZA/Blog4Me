@@ -19,9 +19,7 @@ public class MainPage extends WebPage {
 		UserRepository userRepository = StartDB.getContext().getBean(UserRepository.class);
 
 		String loginDB = parameters.get("loginU").toString();
-		System.out.println(loginDB);
 		User user =  userRepository.findOne(loginDB);
-		System.out.println(user);
 
 		String userInitials = user.getLogin() + "(" + user.getFirstName() + " " + user.getLastName() + ")";
 

@@ -1,12 +1,61 @@
 package Blog4Me.ua.jrc.main;
 
+import Blog4Me.ua.jrc.login.LoginPage;
+import Blog4Me.ua.jrc.updateUser.UpdatePage;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import ua.jrc.db.domain.StartDB;
+import ua.jrc.db.entity.User;
+import ua.jrc.db.repository.UserRepository;
 
 public class MainPage extends WebPage {
 
-	public MainPage(PageParameters parameters) {
+	public MainPage(final PageParameters parameters) {
 		super();
-		System.out.println("main " + parameters.get("loginU"));
+
+		UserRepository userRepository = StartDB.getContext().getBean(UserRepository.class);
+
+		String loginDB = parameters.get("loginU").toString();
+		System.out.println(loginDB);
+		User user =  userRepository.findOne(loginDB);
+		System.out.println(user);
+
+		String userInitials = user.getLogin() + "(" + user.getFirstName() + " " + user.getLastName() + ")";
+
+		add(new Label("userInitials", userInitials));
+
+		Form formUpdate = new Form("formUpdate");
+
+		Button update = new Button("update") {
+			@Override
+			public void onSubmit(){
+				super.onSubmit();
+
+				setResponsePage(UpdatePage.class, parameters);
+			}
+		};
+
+		add(formUpdate);
+
+		formUpdate.add(update);
+
+		Form formSignOut = new Form("formSignOut");
+
+		Button signOut = new Button("signOut") {
+			@Override
+			public void onSubmit(){
+				super.onSubmit();
+
+				setResponsePage(LoginPage.class);
+			}
+		};
+
+		add(formSignOut);
+
+		formSignOut.add(signOut);
+
 	}
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html xmlns:wicket="http://wicket.apache.org" xmlns:wicket="http://wicket.apache.org">
+<html xmlns:wicket="http://wicket.apache.org">
 
 <head>
     <meta charset="UTF-8">
@@ -22,20 +22,20 @@
 
 		<div class="coord"><b>Enter password for delete</b></div><br />
 
-		<form>
-			<input type="text" name="login">
+		<form wicket:id="formDelete">
+			<input wicket:id="login" type="text" name="login">
 			<label>Login: </label>
 			<br />
-			<label class="err">Login massage </label>
+			<label wicket:id="loginM" class="err">Login massage </label>
 			
 			<br />
-			<input type="text" name="password">
+			<input wicket:id="password" type="text" name="password">
 			<label>Password: </label>
 			<br />
-			<label class="err">Password massage</label>
+			<label wicket:id="passwordM" class="err">Password massage</label>
 			
 			<br />
-			<input class="btn" type="submit" name="delete" value="Delete">
+			<input wicket:id="delete" class="btn" type="submit" name="delete" value="Delete">
 		</form>
 		<br />
 		

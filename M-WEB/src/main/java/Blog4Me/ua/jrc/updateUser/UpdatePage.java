@@ -1,6 +1,7 @@
 package Blog4Me.ua.jrc.updateUser;
 
 import Blog4Me.ua.jrc.deleteUser.DeletePage;
+import Blog4Me.ua.jrc.login.LoginPage;
 import Blog4Me.ua.jrc.main.MainPage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -11,13 +12,26 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.springframework.dao.EmptyResultDataAccessException;
 import ua.jrc.db.domain.StartDB;
 import ua.jrc.db.entity.User;
 import ua.jrc.db.repository.UserRepository;
 
 public class UpdatePage extends WebPage {
+
+    public UpdatePage() {
+        super();
+        setResponsePage(LoginPage.class);
+    }
+
     public UpdatePage(final PageParameters parameters) {
         super();
+
+        UserRepository userRepository2 = StartDB.getContext().getBean(UserRepository.class);
+
+        if(userRepository2.findOne(parameters.get("loginU").toString()) == null) {
+            setResponsePage(LoginPage.class);
+        }
 
         final User user = new User();
 
@@ -50,15 +64,27 @@ public class UpdatePage extends WebPage {
         login.setEnabled(false);
 
         final TextField firstName = new TextField("firstName", new PropertyModel(user, "firstName"));
-        firstName.setDefaultModelObject(userRepository.findOne(parameters.get("loginU").toString()).getFirstName());
+        try{
+            firstName.setDefaultModelObject(userRepository.findOne(parameters.get("loginU").toString()).getFirstName());
+        } catch (Exception e){
+            setResponsePage(LoginPage.class);
+        }
         firstName.setOutputMarkupId(true);
 
         final TextField lastName = new TextField("lastName", new PropertyModel(user, "lastName"));
-        lastName.setDefaultModelObject(userRepository.findOne(parameters.get("loginU").toString()).getLastName());
+        try{
+            lastName.setDefaultModelObject(userRepository.findOne(parameters.get("loginU").toString()).getLastName());
+        } catch (Exception e){
+            setResponsePage(LoginPage.class);
+        }
         lastName.setOutputMarkupId(true);
 
         final TextField password = new TextField("password", new PropertyModel(user, "password"));
-        password.setDefaultModelObject(userRepository.findOne(parameters.get("loginU").toString()).getPassword());
+        try{
+            password.setDefaultModelObject(userRepository.findOne(parameters.get("loginU").toString()).getPassword());
+        } catch (Exception e){
+            setResponsePage(LoginPage.class);
+        }
         password.setOutputMarkupId(true);
 
         AjaxButton update = new AjaxButton("update") {
@@ -102,9 +128,10 @@ public class UpdatePage extends WebPage {
                                             if (c >= 48 && c <= 57 || c >= 65 && c <= 90 || c >= 97 && c <= 122) {
                                             } else passwordSyntaxError = true;
                                         }
-                                        if (!passwordSyntaxError) {
+                                        try{if (!passwordSyntaxError) {
                                             //If syntax is right
                                             UserRepository userRepository1 = StartDB.getContext().getBean(UserRepository.class);
+
                                             userRepository1.delete(parameters.get("loginU").toString());
 
                                             User tempUser = new User();
@@ -122,26 +149,25 @@ public class UpdatePage extends WebPage {
                                             passwordM.setVisible(true);
                                             lastName.setVisible(false);
                                             firstNameM.setVisible(false);
-                                            loginM.setVisible(false);
+                                        }
+                                        } catch (Exception e){
+                                            setResponsePage(LoginPage.class);
                                         }
                                     } else {
                                         lastName.setDefaultModelObject("Last name must be composed only of latin and numbers!");
                                         lastName.setVisible(true);
                                         passwordM.setVisible(false);
                                         firstNameM.setVisible(false);
-                                        loginM.setVisible(false);
                                     }
                                 } else {
                                     firstNameM.setDefaultModelObject("First name must be composed only of latin and numbers!");
                                     firstNameM.setVisible(true);
                                     lastName.setVisible(false);
-                                    loginM.setVisible(false);
                                     passwordM.setVisible(false);
                                 }
                             } else {
                                 passwordM.setDefaultModelObject("Password is too short! (must be more then 7 symbols)");
                                 passwordM.setVisible(true);
-                                loginM.setVisible(false);
                                 firstNameM.setVisible(false);
                                 lastNameM.setVisible(false);
                             }
@@ -150,24 +176,21 @@ public class UpdatePage extends WebPage {
                             passwordM.setVisible(true);
                             firstNameM.setVisible(false);
                             lastNameM.setVisible(false);
-                            loginM.setVisible(false);
                         }
                     } else {
                         lastNameM.setDefaultModelObject("Last name is empty!");
                         lastNameM.setVisible(true);
                         passwordM.setVisible(false);
                         firstNameM.setVisible(false);
-                        loginM.setVisible(false);
                     }
                 } else {
                     firstNameM.setDefaultModelObject("First name is empty!");
                     firstNameM.setVisible(true);
                     lastNameM.setVisible(false);
                     passwordM.setVisible(false);
-                    loginM.setVisible(false);
                 }
 
-                //Update message labels for login, firstName, lastName and password
+                //Update message labels for firstName, lastName and password
                 target.add(firstNameM);
                 target.add(lastNameM);
                 target.add(passwordM);
@@ -196,7 +219,7 @@ public class UpdatePage extends WebPage {
             @Override
             public void onSubmit(){
                 super.onSubmit();
-                setResponsePage(DeletePage.class);
+                setResponsePage(DeletePage.class, parameters);
             }
         };
 

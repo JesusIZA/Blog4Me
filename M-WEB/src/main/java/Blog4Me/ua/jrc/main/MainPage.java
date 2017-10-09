@@ -13,10 +13,19 @@ import ua.jrc.db.repository.UserRepository;
 
 public class MainPage extends WebPage {
 
+	public MainPage() {
+		super();
+		setResponsePage(LoginPage.class);
+	}
+
 	public MainPage(final PageParameters parameters) {
 		super();
 
 		UserRepository userRepository = StartDB.getContext().getBean(UserRepository.class);
+
+		if(userRepository.findOne(parameters.get("loginU").toString()) == null) {
+			setResponsePage(LoginPage.class);
+		}
 
 		String loginDB = parameters.get("loginU").toString();
 		User user =  userRepository.findOne(loginDB);

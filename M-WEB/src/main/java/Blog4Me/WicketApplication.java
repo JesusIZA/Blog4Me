@@ -1,6 +1,7 @@
 package Blog4Me;
 
 import Blog4Me.ua.jrc.login.LoginPage;
+import Blog4Me.ua.jrc.main.MainPage;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
@@ -18,7 +19,7 @@ public class WicketApplication extends WebApplication
 	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
-		return LoginPage.class;
+		return MainPage.class;
 	}
 
 	/**

@@ -17,8 +17,12 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.request.resource.ResourceReference;
 import ua.jrc.db.domain.StartDB;
+import ua.jrc.db.entity.Blog;
 import ua.jrc.db.entity.User;
+import ua.jrc.db.repository.BlogRepository;
 import ua.jrc.db.repository.UserRepository;
+
+import java.util.List;
 
 public class MainPage extends WebPage {
 /*
@@ -73,19 +77,50 @@ public class MainPage extends WebPage {
 
 		formSignOut.add(signOut);
 
+		//BLOGS
+		BlogRepository blogRepository = StartDB.getContext().getBean(BlogRepository.class);
+
+		List<Blog> blogList = blogRepository.findAll();
+
+		RepeatingView htmlBlogs = new RepeatingView("strip");
+		htmlBlogs.setOutputMarkupId(true);
+		htmlBlogs.setOutputMarkupPlaceholderTag(true);
+
 		//Blogs refers
+		int i = 1;
+		for(Blog blog: blogList){
+			WebMarkupContainer informationBox = new WebMarkupContainer ("content");
+			informationBox.add(new Label("label", blog.getSubject()));
+			informationBox.add(new Image("img", "blogs/str" + i + ".jpg"));
+			i++;
+
+			Link blogRef = new Link(htmlBlogs.newChildId()) {
+				@Override
+				public void onClick() {
+					//REFER
+
+				}
+			};
+
+			blogRef.add(informationBox);
+			htmlBlogs.add(blogRef);
+		}
+
+		add(htmlBlogs);
+/*
 		WebMarkupContainer informationBox = new WebMarkupContainer ("content");
-		informationBox.add(new Label("label", "About this project"));
+		informationBox.add(new Label("label", blog.getSubject()));
 		informationBox.add(new Image("img", "str1.jpg"));
 
 		Link blogRef = new Link("blogRef") {
-            @Override
-            public void onClick() {
-            }
-        };
+			@Override
+			public void onClick() {
+
+			}
+		};
 
 		blogRef.add(informationBox);
-
-		add(blogRef);
+		htmlBlogs.add(blogRef);
+*/
 	}
 }

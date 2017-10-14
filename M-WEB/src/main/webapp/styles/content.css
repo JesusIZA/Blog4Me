@@ -12,16 +12,19 @@
 }
 .str {
 	width: 360px;
-	height: 200px;
+	height: 240px;
 	float: left;
 	margin: 20px;
-	background: black;
 	overflow: hidden; /*schob vmist bloky ne vuhoduv za meji*/
 	position: relative;
 	cursor: pointer;
-	
 	border-radius: 5px;
 	box-shadow: 0 8px 15px rgba(0,0,0,.6);
+}
+.str i {
+    position: absolute;
+    width: 360px;
+	background: rgba(0,0,0,.7);
 }
 /*Nakladka gradient na img*/
 .str::after {

@@ -35,26 +35,8 @@
 	</div>
 
         <div class="content">
-<!--
-            <div class="strip">
-                <a href="#about"><div class="str">
-                    About this project
-                    <img src="styles/images/str1.jpg" alt="img">
-                </div></a>
-                <a href="#subject1"><div class="str">
-                    Go ot JRC.INC.UA Blog subject 1
-                    <img src="styles/images/str2.jpg" alt="img">
-                </div></a>
-                <a href="#subject2"><div class="str">
-                    Go ot JRC.INC.UA Blog subject 2
-                    <img src="styles/images/str3.jpg" alt="img">
-                </div></a>
-
-                <div class="clear"></div>
-            </div>
--->
-            <div class="strip">
-                    <a wicket:id="blogRef" href="#">
+            <div wicket:id="strip" class="strip">
+                    <a href="#">
                         <div wicket:id="content" class="str">
                             <i wicket:id="label" >About this project</i>
                             <img wicket:id="img" alt="img">
@@ -62,7 +44,8 @@
                     </a>
             </div>
 
-                <div class="clear"></div>
+
+            <div class="clear"></div>
 
             <div id="about" class="slabe">
                 <img src="styles/images/creator.jpg" alt="creator.jpg">
@@ -76,7 +59,6 @@
                 </p>
             </div>
 
-            <div class="clear"></div>
         </div>
 
         <div class="footer">

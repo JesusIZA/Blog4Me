@@ -13,11 +13,11 @@ public class Post implements Serializable{
     @Column(name = "TEXT")
     String text;
 
-    @ManyToMany(mappedBy = "posts")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "posts")
     private Set<User> users;
 
-    @ManyToMany(mappedBy = "posts")
-    private Set<User> blogs;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "posts")
+    private Set<Blog> blogs;
 
     public Post() {
     }
@@ -46,11 +46,11 @@ public class Post implements Serializable{
         this.users = users;
     }
 
-    public Set<User> getBlogs() {
+    public Set<Blog> getBlogs() {
         return blogs;
     }
 
-    public void setBlogs(Set<User> blogs) {
+    public void setBlogs(Set<Blog> blogs) {
         this.blogs = blogs;
     }
 

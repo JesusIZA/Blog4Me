@@ -1,5 +1,6 @@
 package Blog4Me.ua.jrc.main;
 
+import Blog4Me.ua.jrc.blog.BlogPage;
 import Blog4Me.ua.jrc.login.LoginPage;
 import Blog4Me.ua.jrc.updateUser.UpdatePage;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -25,15 +26,14 @@ import ua.jrc.db.repository.UserRepository;
 import java.util.List;
 
 public class MainPage extends WebPage {
-/*
+
 	public MainPage() {
 		super();
 		setResponsePage(LoginPage.class);
 	}
-*/
+
 	public MainPage(final PageParameters parameters) {
-		super();
-		parameters.set("loginU", "Login1");
+		super(parameters);
 		UserRepository userRepository = StartDB.getContext().getBean(UserRepository.class);
 
 		if(userRepository.findOne(parameters.get("loginU").toString()) == null) {
@@ -78,7 +78,7 @@ public class MainPage extends WebPage {
 		formSignOut.add(signOut);
 
 		//BLOGS
-		BlogRepository blogRepository = StartDB.getContext().getBean(BlogRepository.class);
+		final BlogRepository blogRepository = StartDB.getContext().getBean(BlogRepository.class);
 
 		List<Blog> blogList = blogRepository.findAll();
 
@@ -87,40 +87,28 @@ public class MainPage extends WebPage {
 		htmlBlogs.setOutputMarkupPlaceholderTag(true);
 
 		//Blogs refers
+		parameters.add("blogU", "b1");
 		int i = 1;
 		for(Blog blog: blogList){
 			WebMarkupContainer informationBox = new WebMarkupContainer ("content");
 			informationBox.add(new Label("label", blog.getSubject()));
 			informationBox.add(new Image("img", "blogs/str" + i + ".jpg"));
-			i++;
-
+			final int b = i;
 			Link blogRef = new Link(htmlBlogs.newChildId()) {
 				@Override
 				public void onClick() {
 					//REFER
+					parameters.set("blogU", "b" + b);
 
+					setResponsePage(BlogPage. class, parameters);
 				}
 			};
 
+			i++;
 			blogRef.add(informationBox);
 			htmlBlogs.add(blogRef);
 		}
 
 		add(htmlBlogs);
-/*
-		WebMarkupContainer informationBox = new WebMarkupContainer ("content");
-		informationBox.add(new Label("label", blog.getSubject()));
-		informationBox.add(new Image("img", "str1.jpg"));
-
-		Link blogRef = new Link("blogRef") {
-			@Override
-			public void onClick() {
-
-			}
-		};
-
-		blogRef.add(informationBox);
-		htmlBlogs.add(blogRef);
-*/
 	}
 }

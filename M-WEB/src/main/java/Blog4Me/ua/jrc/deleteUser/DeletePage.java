@@ -21,7 +21,7 @@ public class DeletePage extends WebPage {
     }
 
     public DeletePage(final PageParameters parameters) {
-        super();
+        super(parameters);
 
         UserRepository userRepository2 = StartDB.getContext().getBean(UserRepository.class);
 

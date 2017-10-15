@@ -25,7 +25,7 @@ public class UpdatePage extends WebPage {
     }
 
     public UpdatePage(final PageParameters parameters) {
-        super();
+        super(parameters);
 
         UserRepository userRepository2 = StartDB.getContext().getBean(UserRepository.class);
 

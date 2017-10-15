@@ -13,7 +13,7 @@ public class Blog implements Serializable{
     @Column(name = "SUBJECT")
     String subject;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "LINKS",
             joinColumns = @JoinColumn(name = "BID"),

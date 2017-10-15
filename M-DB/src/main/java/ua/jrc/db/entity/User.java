@@ -19,7 +19,7 @@ public class User implements Serializable{
     @Column(name = "PASSWORD")
     String password;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "LINKS",
             joinColumns = @JoinColumn(name = "LOGIN"),

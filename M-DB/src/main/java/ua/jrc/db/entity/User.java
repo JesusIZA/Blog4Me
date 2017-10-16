@@ -19,14 +19,6 @@ public class User implements Serializable{
     @Column(name = "PASSWORD")
     String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "LINKS",
-            joinColumns = @JoinColumn(name = "LOGIN"),
-            inverseJoinColumns = @JoinColumn(name = "MID")
-    )
-    private Set<Post> posts;
-
     public User() {
     }
 
@@ -60,14 +52,6 @@ public class User implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Set<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Set<Post> posts) {
-        this.posts = posts;
     }
 
     @Override

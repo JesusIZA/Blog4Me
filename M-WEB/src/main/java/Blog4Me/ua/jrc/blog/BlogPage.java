@@ -19,6 +19,7 @@ import ua.jrc.db.repository.BlogRepository;
 import ua.jrc.db.repository.PostRepository;
 import ua.jrc.db.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -36,6 +37,7 @@ public class BlogPage extends WebPage {
         parameters.add("blogU", "b1");
         //
         UserRepository userRepository = StartDB.getContext().getBean(UserRepository.class);
+        PostRepository postRepository = StartDB.getContext().getBean(PostRepository.class);
         BlogRepository blogRepository = StartDB.getContext().getBean(BlogRepository.class);
 
         if(userRepository.findOne(parameters.get("loginU").toString()) == null || blogRepository.findOne(parameters.get("blogU").toString()) == null) {
@@ -95,8 +97,13 @@ public class BlogPage extends WebPage {
         formAddMessage.add(addMessage);
 
         //MESSAGES
-        Blog blog = blogRepository.findOne(parameters.get("blogU").toString());
-        Set<Post> postList = blog.getPosts();
+        List<Post> tempPostList = postRepository.findAll();
+        List<Post> postList = new ArrayList<Post>();
+        for(Post p: tempPostList){
+            if(p.getBid().equals(parameters.get("blogU").toString())){
+                postList.add(p);
+            }
+        }
 
         RepeatingView htmlPosts = new RepeatingView("post");
         htmlPosts.setOutputMarkupId(true);
@@ -105,15 +112,8 @@ public class BlogPage extends WebPage {
         for(final Post post: postList){
             WebMarkupContainer informationBox = new WebMarkupContainer (htmlPosts.newChildId());
 
-            Set<User> userSet = post.getUsers();
-            String userLStr = "None";
-            for(User u: userSet){
-                for(Post p: u.getPosts()){
-                    if(p.getMid().equals(post.getMid())){
-                        userLStr = u.getLogin();
-                    }
-                }
-            }
+            String userLStr = post.getLogin();
+
             Label userL = new Label("userL", userLStr);
 
             Form formDeleteMessage = new Form("formDeleteMessage");

@@ -2,9 +2,15 @@ package ua.jrc.db.domain;
 
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ua.jrc.db.entity.Blog;
+import ua.jrc.db.entity.Post;
+import ua.jrc.db.entity.User;
 import ua.jrc.db.repository.BlogRepository;
 import ua.jrc.db.repository.PostRepository;
 import ua.jrc.db.repository.UserRepository;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Domain {
     public static void main(String [] args) {

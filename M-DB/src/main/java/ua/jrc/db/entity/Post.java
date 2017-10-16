@@ -10,14 +10,14 @@ public class Post implements Serializable{
     @Id
     String mid;
 
+    @Column(name = "BID")
+    String bid;
+
+    @Column(name = "LOGIN")
+    String login;
+
     @Column(name = "TEXT")
     String text;
-
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "posts")
-    private Set<User> users;
-
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "posts")
-    private Set<Blog> blogs;
 
     public Post() {
     }
@@ -30,28 +30,28 @@ public class Post implements Serializable{
         this.mid = mid;
     }
 
+    public String getBid() {
+        return bid;
+    }
+
+    public void setBid(String bid) {
+        this.bid = bid;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getText() {
         return text;
     }
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
-    public Set<Blog> getBlogs() {
-        return blogs;
-    }
-
-    public void setBlogs(Set<Blog> blogs) {
-        this.blogs = blogs;
     }
 
     @Override

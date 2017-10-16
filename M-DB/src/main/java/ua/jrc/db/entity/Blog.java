@@ -13,14 +13,6 @@ public class Blog implements Serializable{
     @Column(name = "SUBJECT")
     String subject;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "LINKS",
-            joinColumns = @JoinColumn(name = "BID"),
-            inverseJoinColumns = @JoinColumn(name = "MID")
-    )
-    private Set<Post> posts;
-
     public Blog() {
     }
 
@@ -43,14 +35,6 @@ public class Blog implements Serializable{
 
     public void setSubject(String subject) {
         this.subject = subject;
-    }
-
-    public Set<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Set<Post> posts) {
-        this.posts = posts;
     }
 
     @Override

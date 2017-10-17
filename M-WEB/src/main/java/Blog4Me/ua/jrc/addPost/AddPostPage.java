@@ -26,7 +26,6 @@ import java.util.Set;
 public class AddPostPage extends WebPage {
     public AddPostPage(final PageParameters parameters) {
         super(parameters);
-        System.out.println(parameters);
 
         Form formAdd = new Form("formAdd");
 

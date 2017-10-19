@@ -14,7 +14,7 @@ import ua.jrc.db.domain.StartDB;
 import ua.jrc.db.entity.Post;
 import ua.jrc.db.repository.PostRepository;
 
-public class EditPostPage extends WebPage {
+public class EditPostPage extends WebPage{
 
     public EditPostPage(final PageParameters parameters) {
         super(parameters);

@@ -1,0 +1,8 @@
+CREATE TABLE BLOGS (
+	BID VARCHAR(24) NOT NULL PRIMARY KEY,
+	SUBJECT VARCHAR(250) NOT NULL
+);
+
+INSERT INTO BLOGS (BID, SUBJECT) VALUES ('b1', 'Global warming on our planet. Consequences of global warming for humanity');
+INSERT INTO BLOGS (BID, SUBJECT) VALUES ('b2', 'German cars. All about Mercedes, BMW and Audi');
+INSERT INTO BLOGS (BID, SUBJECT) VALUES ('b3', 'What think philosophers are? The most famous philosophers of all time and their most prominent works');

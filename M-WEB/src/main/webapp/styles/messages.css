@@ -1,0 +1,55 @@
+.mcontent{
+    margin-top: 30px;
+    background: rgba(0,0,0, .2);
+	border-radius: 5px;
+}
+.messages{
+    float: right;
+}
+.block {
+    background: rgba(0,0,0, .7);
+	width: 1190px;
+	min-height: 150px;
+	margin: 5px auto;/*5 zverhu i znuzy po bokah auto(po centry)*/
+	border-radius: 5px;
+	box-shadow: 0 2px 2px rgba(0,0,0,.4);
+	position: relative;
+}
+.block p {
+    padding: 20px;
+    padding-top: 60px;
+    text-align: left;
+}
+.user {
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    background: #222;
+    border-radius: 5px;
+    padding: 10px;
+    color: #eee;
+}
+.subject {
+    background: rgba(0, 0, 0, 0.6);
+	width: 1200px;
+    border-radius: 5px;
+    font-size: 30pt;
+    display: inline-block;
+    text-align: left;
+}
+.btn2{
+    margin: 10px;
+}
+
+.btn3 {
+	width: 90px;
+	height: 30px;
+	border: solid black;
+	background: black;
+	color: white;
+	float: right;
+}
+.btn3:hover {
+	background: white;
+	color: black;
+}

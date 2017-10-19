@@ -1,0 +1,79 @@
+<html xmlns:wicket="http://wicket.apache.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="styles/images/icon.png">
+    <link rel="stylesheet" type="text/css" href="styles/main.css"/>
+</head>
+
+<body>
+
+	<div class="header">
+
+		<img src="styles/images/icon.png" alt="icon.png" />
+		<span class="title"><b><i>JRC.INC.UA</i></b></span>
+
+		<div class="clear"></div>
+	</div>
+
+	<div class="content">
+
+		<div class="coord"><b>Enter login, first and last name and password for registration</b></div><br />
+
+		<form wicket:id="formRegistration">
+			<input wicket:id="login" type="text" name="login">
+			<label>Login: </label>
+			<br />
+			<label wicket:id="loginM" class="err">Login massage </label>
+
+			<br />
+			<input wicket:id="firstName" type="text" name="firstName">
+			<label>First name: </label>
+			<br />
+			<label wicket:id="firstNameM" class="err">First name massage</label>
+			<br />
+			<input wicket:id="lastName" type="text" name="lastName">
+			<label>Last name: </label>
+			<br />
+			<label wicket:id="lastNameM" class="err">Last name massage</label>
+			
+			<br />
+			<input wicket:id="password" type="text" name="password">
+			<label>Password: </label>
+			<br />
+			<label wicket:id="passwordM" class="err">Password massage</label>
+			
+			<br />
+			<input wicket:id="registration" class="btn" type="submit" name="registration" value="Registration">
+
+		</form>
+		<form wicket:id="formLogin">
+			<input wicket:id="signIn" class="btn" type="submit" name="signin" value="Go to sign in">
+			<div class="clear"></div>
+		</form>
+		
+		<div class="clear"></div>
+	</div>
+
+	<div class="footer">
+
+		<span class="l">
+			<div>JRC.INC.UA</div>
+			<div>Jesus Raichuk</div>
+			<div>2017</div>
+		</span>
+
+		<span class="r">
+			<div>Phone: +380 96 12 24 776</div>
+			<div>Email: NeverSayDie.JR@gmail.com</div>
+			<div>Kyiv/Ukraine</div>
+		</span>
+
+		<div class="clear"></div>
+	</div>
+
+</body>
+
+</html>
